@@ -10,5 +10,7 @@
         }
 
         public override string ToString() => $"£{_amount:0.00}";
+
+        public static Gbp operator *(int multiplier, Gbp value) => new Gbp(multiplier * value._amount);
     }
 }

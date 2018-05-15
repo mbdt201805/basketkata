@@ -12,7 +12,7 @@ namespace BasketKata
             get
             {
                 if(_items.Count == 2)
-                    return new Gbp(2 * 0.80m);
+                    return 2 * new Gbp(0.80m);
                 if(_items.Any())
                     return new Gbp(0.80m);
                 return new Gbp(0m);
