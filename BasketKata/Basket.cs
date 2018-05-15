@@ -19,15 +19,15 @@ namespace BasketKata
 
         private RunningTotal Calculate(RunningTotal runningTotal)
         {
-            runningTotal = _breadAndButterRule.ApplyBreadAndButterRule(runningTotal);
+            runningTotal = _breadAndButterRule.Apply(runningTotal);
 
-            runningTotal = _multiMilkRule.ApplyMultiMilkRule(runningTotal);
+            runningTotal = _multiMilkRule.Apply(runningTotal);
 
-            runningTotal = _butterRule.ApplyButterRule(runningTotal);
+            runningTotal = _butterRule.Apply(runningTotal);
 
-            runningTotal = _milkRule.ApplyMilkRule(runningTotal);
+            runningTotal = _milkRule.Apply(runningTotal);
 
-            runningTotal = _breadRule.ApplyBreadRule(runningTotal);
+            runningTotal = _breadRule.Apply(runningTotal);
 
             return runningTotal;
         }

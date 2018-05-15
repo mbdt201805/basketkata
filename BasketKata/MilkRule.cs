@@ -2,7 +2,7 @@
 {
     public class MilkRule
     {
-        public RunningTotal ApplyMilkRule(RunningTotal runningTotal)
+        public RunningTotal Apply(RunningTotal runningTotal)
         {
             while (runningTotal.CountMilk >= 1)
             {

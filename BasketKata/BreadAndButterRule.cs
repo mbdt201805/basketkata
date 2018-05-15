@@ -2,7 +2,7 @@
 {
     public class BreadAndButterRule
     {
-        public RunningTotal ApplyBreadAndButterRule(RunningTotal runningTotal)
+        public RunningTotal Apply(RunningTotal runningTotal)
         {
             while (runningTotal.CountButter >= 2 && runningTotal.CountBread >= 1)
             {

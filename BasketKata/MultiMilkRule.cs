@@ -2,7 +2,7 @@
 {
     public class MultiMilkRule
     {
-        public RunningTotal ApplyMultiMilkRule(RunningTotal runningTotal)
+        public RunningTotal Apply(RunningTotal runningTotal)
         {
             while (runningTotal.CountMilk >= 4)
             {

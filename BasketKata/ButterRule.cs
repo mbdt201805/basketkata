@@ -2,7 +2,7 @@
 {
     public class ButterRule
     {
-        public RunningTotal ApplyButterRule(RunningTotal runningTotal)
+        public RunningTotal Apply(RunningTotal runningTotal)
         {
             while (runningTotal.CountButter >= 1)
             {
