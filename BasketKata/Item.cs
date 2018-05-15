@@ -2,11 +2,11 @@
 {
     public abstract class Item
     {
-        public abstract Gbp Price { get; }
-
         public static Item Butter { get; } = new ButterItem();
         public static Item Milk { get; } = new MilkItem();
         public static Item Bread { get; } = new BreadItem();
+
+        public abstract Gbp Price { get; }
 
         private class ButterItem : Item
         {
