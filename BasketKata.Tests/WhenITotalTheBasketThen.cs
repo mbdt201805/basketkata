@@ -5,10 +5,10 @@ using static BasketKata.Item;
 namespace BasketKata.Tests
 {
     [TestFixture]
-    public class BasketShould
+    public class WhenITotalTheBasketThen
     {
         [Test]
-        public void HaveTotalZero_WhenEmpty()
+        public void TheTotalShouldBeZero_GivenTheBaketIsEmpty()
         {
             var basket = new Basket();
 
@@ -18,7 +18,7 @@ namespace BasketKata.Tests
         }
 
         [Test]
-        public void HaveTotal80Pence_WhenItHas1Butter()
+        public void TheTotalShouldBe80Pence_GivenTheBasketHas1Butter()
         {
             var basket = new Basket();
             basket.Add(Butter);
@@ -29,7 +29,7 @@ namespace BasketKata.Tests
         }
 
         [Test]
-        public void HaveTotal1Pound60_WhenItHas2Butter()
+        public void TheTotalShouldBe1Pound60_GivenTheBasketHas2Butter()
         {
             var basket = new Basket();
             basket.Add(Butter);
@@ -41,7 +41,7 @@ namespace BasketKata.Tests
         }
 
         [Test]
-        public void HaveTotal1Pound95_WhenItHas1Butter1Milk()
+        public void TheTotalShouldBe1Pound95_GivenTheBasketHas1ButterAnd1Milk()
         {
             var basket = new Basket();
             basket.Add(Butter);
@@ -53,7 +53,7 @@ namespace BasketKata.Tests
         }
 
         [Test]
-        public void HaveTotal3Pounds90_WhenItHAs2Butter2Milk()
+        public void TheTotalShouldBe3Pounds90_GivenTheBasketHas2ButterAnd2Milk()
         {
             var basket = new Basket();
             basket.Add(Butter);
@@ -67,7 +67,7 @@ namespace BasketKata.Tests
         }
 
         [Test]
-        public void HaveTotal2Pounds95_WhenItHas1Butter1Milk1Bread()
+        public void TheTotalShouldBe2Pounds95_GivenTheBasketHas1Butter1MilkAnd1Bread()
         {
             var basket = new Basket();
             basket.Add(Butter);
