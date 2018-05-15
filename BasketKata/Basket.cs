@@ -19,17 +19,9 @@ namespace BasketKata
 
         private RunningTotal Calculate(RunningTotal runningTotal)
         {
-            runningTotal = _breadAndButterRule.Apply(runningTotal);
+            var rules = new IPricingRule[] {_breadAndButterRule, _multiMilkRule, _butterRule, _milkRule, _breadRule};
 
-            runningTotal = _multiMilkRule.Apply(runningTotal);
-
-            runningTotal = _butterRule.Apply(runningTotal);
-
-            runningTotal = _milkRule.Apply(runningTotal);
-
-            runningTotal = _breadRule.Apply(runningTotal);
-
-            return runningTotal;
+            return rules.Aggregate(runningTotal, (rt, rule) => rule.Apply(rt));
         }
 
         private int Count(Item item) => _items.Count(i => i == item);
