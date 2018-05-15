@@ -6,6 +6,8 @@ namespace BasketKata
 {
     public class RemainingBasket
     {
+        public static RemainingBasket FromItems(IEnumerable<Item> items) => new RemainingBasket(items);
+
         private readonly IEnumerable<Item> _items;
 
         private RemainingBasket(IEnumerable<Item> items)
@@ -15,22 +17,16 @@ namespace BasketKata
 
         public int Count(Item item) => _items.Count(i => i == item);
 
-        public static RemainingBasket FromItems(IEnumerable<Item> items) => new RemainingBasket(items);
+        public RemainingBasket Without(IEnumerable<Item> itemsToRemove) => new RemainingBasket(ItemsWithout(itemsToRemove));
 
-        public RemainingBasket RemoveAll(params Item[] itemsToRemove)
+        private IEnumerable<Item> ItemsWithout(IEnumerable<Item> itemsToRemove)
         {
-            var butterToRemove = itemsToRemove.Count(item => item == Butter);
-            var milkToRemove = itemsToRemove.Count(item => item == Milk);
-            var breadToRemove = itemsToRemove.Count(item => item == Bread);
-
-            var countButter = Count(Butter) - butterToRemove;
-            var countBread = Count(Bread) - breadToRemove;
-            var countMilk = Count(Milk) - milkToRemove;
-
-            var newItems = Enumerable.Repeat(Butter, countButter).Concat(Enumerable.Repeat(Bread, countBread))
-                .Concat(Enumerable.Repeat(Milk, countMilk));
-
-            return new RemainingBasket(newItems);
+            var copyOfItems = new List<Item>(_items);
+            foreach (var item in itemsToRemove)
+            {
+                copyOfItems.Remove(item);
+            }
+            return copyOfItems;
         }
     }
 }

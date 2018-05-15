@@ -4,7 +4,7 @@ namespace BasketKata
 {
     public class RunningTotal
     {
-        public static RunningTotal FromItems(IList<Item> items) => new RunningTotal(RemainingBasket.FromItems(items), new Gbp(0.00m));
+        public static RunningTotal FromItems(IEnumerable<Item> items) => new RunningTotal(RemainingBasket.FromItems(items), new Gbp(0.00m));
 
         private readonly RemainingBasket _remainingBasket;
 
@@ -15,8 +15,9 @@ namespace BasketKata
         }
 
         public int Count(Item item) => _remainingBasket.Count(item);
+
         public Gbp Total { get; }
 
-        public RunningTotal ApplyPrice(Gbp price, params Item[] items) => new RunningTotal(_remainingBasket.RemoveAll(items), Total + price);
+        public RunningTotal ApplyPrice(Gbp price, params Item[] items) => new RunningTotal(_remainingBasket.Without(items), Total + price);
     }
 }
