@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Shouldly;
-using static BasketKata.Tests.Item;
+using static BasketKata.Item;
 
 namespace BasketKata.Tests
 {
@@ -28,43 +26,6 @@ namespace BasketKata.Tests
             var total = basket.Total;
 
             total.ShouldBe(new Gbp(0.80m));
-        }
-    }
-
-    public enum Item
-    {
-        Butter
-    }
-
-    public struct Gbp
-    {
-        private readonly decimal _amount;
-
-        public Gbp(decimal amount)
-        {
-            _amount = amount;
-        }
-
-        public override string ToString() => $"£{_amount:0.00}";
-    }
-
-    public class Basket
-    {
-        private readonly IList<Item> _items = new List<Item>();
-
-        public Gbp Total
-        {
-            get
-            {
-                if(_items.Any())
-                    return new Gbp(0.80m);
-                return new Gbp(0m);
-            }
-        }
-
-        public void Add(Item item)
-        {
-            _items.Add(item);
         }
     }
 }
