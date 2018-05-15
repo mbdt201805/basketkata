@@ -53,9 +53,24 @@ namespace BasketKata
                 runningTotal.CountMilk -= 4;
             }
 
-            runningTotal.Total += runningTotal.CountButter * new Gbp(0.80m);
-            runningTotal.Total += runningTotal.CountMilk * new Gbp(1.15m);
-            runningTotal.Total += runningTotal.CountBread * new Gbp(1.00m);
+            while (runningTotal.CountButter >= 1)
+            {
+                runningTotal.CountButter -= 1;
+                runningTotal.Total += new Gbp(0.80m);
+            }
+
+            while (runningTotal.CountMilk >= 1)
+            {
+                runningTotal.CountMilk -= 1;
+                runningTotal.Total += new Gbp(1.15m);
+            }
+
+            while (runningTotal.CountBread >= 1)
+            {
+                runningTotal.CountBread -= 1;
+                runningTotal.Total += new Gbp(1.00m);
+            }
+
             return runningTotal.Total;
         }
 
