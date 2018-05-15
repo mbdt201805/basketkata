@@ -14,10 +14,10 @@ namespace BasketKata
             Total = total;
         }
 
-        public int CountButter { get; set; }
-        public int CountBread { get; set; }
-        public int CountMilk { get; set; }
-        public Gbp Total { get; set; }
+        public int CountButter { get; }
+        public int CountBread { get; }
+        public int CountMilk { get; }
+        public Gbp Total { get; }
     }
 
     public class Basket
@@ -42,33 +42,32 @@ namespace BasketKata
         {
             while (runningTotal.CountButter >= 2 && runningTotal.CountBread >= 1)
             {
-                runningTotal.Total += new Gbp(2.10m);
-                runningTotal.CountButter -= 2;
-                runningTotal.CountBread -= 1;
+                runningTotal = new RunningTotal(runningTotal.CountButter - 2, runningTotal.CountBread - 1,
+                    runningTotal.CountMilk, runningTotal.Total + new Gbp(2.10m));
             }
 
             while (runningTotal.CountMilk >= 4)
             {
-                runningTotal.Total += new Gbp(3.45m);
-                runningTotal.CountMilk -= 4;
+                runningTotal = new RunningTotal(runningTotal.CountButter, runningTotal.CountBread,
+                    runningTotal.CountMilk -4, runningTotal.Total+ new Gbp(3.45m));
             }
 
             while (runningTotal.CountButter >= 1)
             {
-                runningTotal.CountButter -= 1;
-                runningTotal.Total += new Gbp(0.80m);
+                runningTotal = new RunningTotal(runningTotal.CountButter - 1, runningTotal.CountBread,
+                    runningTotal.CountMilk, runningTotal.Total + new Gbp(0.80m));
             }
 
             while (runningTotal.CountMilk >= 1)
             {
-                runningTotal.CountMilk -= 1;
-                runningTotal.Total += new Gbp(1.15m);
+                runningTotal = new RunningTotal(runningTotal.CountButter, runningTotal.CountBread,
+                    runningTotal.CountMilk - 1, runningTotal.Total + new Gbp(1.15m));
             }
 
             while (runningTotal.CountBread >= 1)
             {
-                runningTotal.CountBread -= 1;
-                runningTotal.Total += new Gbp(1.00m);
+                runningTotal = new RunningTotal(runningTotal.CountButter, runningTotal.CountBread - 1,
+                    runningTotal.CountMilk, runningTotal.Total + new Gbp(1.00m));
             }
 
             return runningTotal.Total;
