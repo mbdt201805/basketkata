@@ -7,6 +7,11 @@ namespace BasketKata
     public class Basket
     {
         private readonly IList<Item> _items = new List<Item>();
+        private readonly BreadAndButterRule _breadAndButterRule = new BreadAndButterRule();
+        private readonly MultiMilkRule _multiMilkRule = new MultiMilkRule();
+        private readonly ButterRule _butterRule = new ButterRule();
+        private readonly MilkRule _milkRule = new MilkRule();
+        private readonly BreadRule _breadRule = new BreadRule();
 
         public void Add(Item item) => _items.Add(item);
 
@@ -14,70 +19,15 @@ namespace BasketKata
 
         private RunningTotal Calculate(RunningTotal runningTotal)
         {
-            runningTotal = ApplyBreadAndButterRule(runningTotal);
+            runningTotal = _breadAndButterRule.ApplyBreadAndButterRule(runningTotal);
 
-            runningTotal = ApplyMultiMilkRule(runningTotal);
+            runningTotal = _multiMilkRule.ApplyMultiMilkRule(runningTotal);
 
-            runningTotal = ApplyButterRule(runningTotal);
+            runningTotal = _butterRule.ApplyButterRule(runningTotal);
 
-            runningTotal = ApplyMilkRule(runningTotal);
+            runningTotal = _milkRule.ApplyMilkRule(runningTotal);
 
-            runningTotal = ApplyBreadRule(runningTotal);
-
-            return runningTotal;
-        }
-
-        private RunningTotal ApplyBreadAndButterRule(RunningTotal runningTotal)
-        {
-            while (runningTotal.CountButter >= 2 && runningTotal.CountBread >= 1)
-            {
-                runningTotal = new RunningTotal(runningTotal.CountButter - 2, runningTotal.CountBread - 1,
-                    runningTotal.CountMilk, runningTotal.Total + new Gbp(2.10m));
-            }
-
-            return runningTotal;
-        }
-
-        private RunningTotal ApplyMultiMilkRule(RunningTotal runningTotal)
-        {
-            while (runningTotal.CountMilk >= 4)
-            {
-                runningTotal = new RunningTotal(runningTotal.CountButter, runningTotal.CountBread,
-                    runningTotal.CountMilk - 4, runningTotal.Total + new Gbp(3.45m));
-            }
-
-            return runningTotal;
-        }
-
-        private RunningTotal ApplyButterRule(RunningTotal runningTotal)
-        {
-            while (runningTotal.CountButter >= 1)
-            {
-                runningTotal = new RunningTotal(runningTotal.CountButter - 1, runningTotal.CountBread,
-                    runningTotal.CountMilk, runningTotal.Total + new Gbp(0.80m));
-            }
-
-            return runningTotal;
-        }
-
-        private RunningTotal ApplyMilkRule(RunningTotal runningTotal)
-        {
-            while (runningTotal.CountMilk >= 1)
-            {
-                runningTotal = new RunningTotal(runningTotal.CountButter, runningTotal.CountBread,
-                    runningTotal.CountMilk - 1, runningTotal.Total + new Gbp(1.15m));
-            }
-
-            return runningTotal;
-        }
-
-        private RunningTotal ApplyBreadRule(RunningTotal runningTotal)
-        {
-            while (runningTotal.CountBread >= 1)
-            {
-                runningTotal = new RunningTotal(runningTotal.CountButter, runningTotal.CountBread - 1,
-                    runningTotal.CountMilk, runningTotal.Total + new Gbp(1.00m));
-            }
+            runningTotal = _breadRule.ApplyBreadRule(runningTotal);
 
             return runningTotal;
         }

@@ -41,8 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Basket.cs" />
+    <Compile Include="BreadAndButterRule.cs" />
+    <Compile Include="BreadRule.cs" />
+    <Compile Include="ButterRule.cs" />
     <Compile Include="Gbp.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="MilkRule.cs" />
+    <Compile Include="MultiMilkRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RunningTotal.cs" />
   </ItemGroup>
