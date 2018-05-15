@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using static BasketKata.Item;
 
 namespace BasketKata
 {
@@ -14,9 +15,9 @@ namespace BasketKata
             {
                 new BreadAndButterRule(),
                 new MultiMilkRule(),
-                new ButterRule(),
-                new MilkRule(),
-                new BreadRule()
+                new SingleItemRule(Butter),
+                new SingleItemRule(Milk),
+                new SingleItemRule(Bread)
             };
         }
 
