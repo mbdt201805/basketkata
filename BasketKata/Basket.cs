@@ -14,16 +14,19 @@ namespace BasketKata
         {
             get
             {
+                var countButter = Count(Butter);
+                var countMilk = Count(Milk);
+                var countBread = Count(Bread);
                 var total = new Gbp(0.00m);
-                if (Count(Butter) == 2 && Count(Bread) == 1)
+                if (countButter == 2 && countBread == 1)
                     return 2 * new Gbp(0.80m) + 1 * new Gbp(0.50m);
-                if (Count(Butter) == 2 && Count(Bread) == 2)
+                if (countButter == 2 && countBread == 2)
                     return 2 * new Gbp(0.80m) + 1 * new Gbp(0.50m) + 1 * new Gbp(1.00m);
-                if (Count(Butter) == 4 && Count(Bread) == 4)
+                if (countButter == 4 && countBread == 4)
                     return 4 * new Gbp(0.80m) + 2 * new Gbp(0.50m) + 2 * new Gbp(1.00m);
-                total += Count(Butter) * new Gbp(0.80m);
-                total += Count(Milk) * new Gbp(1.15m);
-                total += Count(Bread) * new Gbp(1.00m);
+                total += countButter * new Gbp(0.80m);
+                total += countMilk * new Gbp(1.15m);
+                total += countBread * new Gbp(1.00m);
                 return total;
             }
         }
