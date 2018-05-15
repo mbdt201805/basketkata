@@ -4,41 +4,15 @@ using static BasketKata.Item;
 
 namespace BasketKata
 {
-    public class RunningTotal
-    {
-        public RunningTotal(int countButter, int countBread, int countMilk, Gbp total)
-        {
-            CountButter = countButter;
-            CountBread = countBread;
-            CountMilk = countMilk;
-            Total = total;
-        }
-
-        public int CountButter { get; }
-        public int CountBread { get; }
-        public int CountMilk { get; }
-        public Gbp Total { get; }
-    }
-
     public class Basket
     {
         private readonly IList<Item> _items = new List<Item>();
 
         public void Add(Item item) => _items.Add(item);
 
-        public Gbp Total
-        {
-            get
-            {
-                var countButter = Count(Butter);
-                var countBread = Count(Bread);
-                var countMilk = Count(Milk);
-                var total = new Gbp(0.00m);
-                return Calculate(new RunningTotal(countButter, countBread, countMilk, total));
-            }
-        }
+        public Gbp Total => Calculate(new RunningTotal(Count(Butter), Count(Bread), Count(Milk), new Gbp(0.00m))).Total;
 
-        private static Gbp Calculate(RunningTotal runningTotal)
+        private static RunningTotal Calculate(RunningTotal runningTotal)
         {
             while (runningTotal.CountButter >= 2 && runningTotal.CountBread >= 1)
             {
@@ -70,7 +44,7 @@ namespace BasketKata
                     runningTotal.CountMilk, runningTotal.Total + new Gbp(1.00m));
             }
 
-            return runningTotal.Total;
+            return runningTotal;
         }
 
         private int Count(Item item) => _items.Count(i => i == item);
