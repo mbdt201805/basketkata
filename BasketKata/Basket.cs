@@ -11,6 +11,8 @@ namespace BasketKata
         {
             get
             {
+                if(_items.Count(item => item == Item.Butter) == 1 && _items.Count(item => item == Item.Milk) == 1)
+                    return new Gbp(1.95m);
                 if(_items.Any())
                     return _items.Count * new Gbp(0.80m);
                 return new Gbp(0m);

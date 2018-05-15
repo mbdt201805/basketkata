@@ -2,6 +2,7 @@
 {
     public enum Item
     {
-        Butter
+        Butter,
+        Milk
     }
 }
