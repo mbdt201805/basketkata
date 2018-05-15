@@ -18,6 +18,8 @@ namespace BasketKata
                     return 2 * new Gbp(0.80m) + 1 * new Gbp(0.50m);
                 if (Count(Butter) == 2 && Count(Bread) == 2)
                     return 2 * new Gbp(0.80m) + 1 * new Gbp(0.50m) + 1 * new Gbp(1.00m);
+                if (Count(Butter) == 4 && Count(Bread) == 4)
+                    return 4 * new Gbp(0.80m) + 2 * new Gbp(0.50m) + 2 * new Gbp(1.00m);
                 return ButterPrice() + MilkPrice() + BreadPrice();
             }
         }
