@@ -78,5 +78,18 @@ namespace BasketKata.Tests
 
             total.ShouldBe(new Gbp(2.95m));
         }
+
+        [Test]
+        public void TheTotalShouldBe2Pounds10_GivenTheBasketHas2ButterAnd1Bread()
+        {
+            var basket = new Basket();
+            basket.Add(Butter);
+            basket.Add(Butter);
+            basket.Add(Bread);
+
+            var total = basket.Total;
+
+            total.ShouldBe(new Gbp(2.10m));
+        }
     }
 }
