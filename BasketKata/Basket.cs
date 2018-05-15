@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using static BasketKata.Item;
 
 namespace BasketKata
 {
@@ -23,11 +22,6 @@ namespace BasketKata
 
         public void Add(Item item) => _items.Add(item);
 
-        public Gbp Total => Calculate(RunningTotal.FromItems(_items)).Total;
-
-        private RunningTotal Calculate(RunningTotal runningTotal)
-        {
-            return _pricingRules.Aggregate(runningTotal, (rt, rule) => rule.Apply(rt));
-        }
+        public Gbp Total => _pricingRules.Aggregate(RunningTotal.FromItems(_items), (runningTotal, rule) => rule.Apply(runningTotal)).Total;
     }
 }
