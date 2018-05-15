@@ -11,9 +11,11 @@ namespace BasketKata
         {
             get
             {
-                if(_items.Count(item => item == Item.Butter) == 1 && _items.Count(item => item == Item.Milk) == 1)
+                var countButter = _items.Count(item => item == Item.Butter);
+                var countMilk = _items.Count(item => item == Item.Milk);
+                if(countButter == 1 && countMilk == 1)
                     return new Gbp(0.80m) + new Gbp(1.15m);
-                if (_items.Count(item => item == Item.Butter) == 2 && _items.Count(item => item == Item.Milk) == 2)
+                if (countButter == 2 && countMilk == 2)
                     return 2 * new Gbp(0.80m) + 2 * new Gbp(1.15m);
                 if (_items.Any())
                     return _items.Count * new Gbp(0.80m);
