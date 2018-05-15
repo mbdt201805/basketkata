@@ -23,13 +23,11 @@ namespace BasketKata
 
         public void Add(Item item) => _items.Add(item);
 
-        public Gbp Total => Calculate(new RunningTotal(Count(Butter), Count(Bread), Count(Milk), new Gbp(0.00m))).Total;
+        public Gbp Total => Calculate(RunningTotal.FromItems(_items)).Total;
 
         private RunningTotal Calculate(RunningTotal runningTotal)
         {
             return _pricingRules.Aggregate(runningTotal, (rt, rule) => rule.Apply(rt));
         }
-
-        private int Count(Item item) => _items.Count(i => i == item);
     }
 }
