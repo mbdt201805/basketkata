@@ -12,7 +12,7 @@ namespace BasketKata
 
         public Gbp Total => Calculate(new RunningTotal(Count(Butter), Count(Bread), Count(Milk), new Gbp(0.00m))).Total;
 
-        private static RunningTotal Calculate(RunningTotal runningTotal)
+        private RunningTotal Calculate(RunningTotal runningTotal)
         {
             runningTotal = ApplyBreadAndButterRule(runningTotal);
 
@@ -27,7 +27,7 @@ namespace BasketKata
             return runningTotal;
         }
 
-        private static RunningTotal ApplyBreadAndButterRule(RunningTotal runningTotal)
+        private RunningTotal ApplyBreadAndButterRule(RunningTotal runningTotal)
         {
             while (runningTotal.CountButter >= 2 && runningTotal.CountBread >= 1)
             {
@@ -38,7 +38,7 @@ namespace BasketKata
             return runningTotal;
         }
 
-        private static RunningTotal ApplyMultiMilkRule(RunningTotal runningTotal)
+        private RunningTotal ApplyMultiMilkRule(RunningTotal runningTotal)
         {
             while (runningTotal.CountMilk >= 4)
             {
@@ -49,7 +49,7 @@ namespace BasketKata
             return runningTotal;
         }
 
-        private static RunningTotal ApplyButterRule(RunningTotal runningTotal)
+        private RunningTotal ApplyButterRule(RunningTotal runningTotal)
         {
             while (runningTotal.CountButter >= 1)
             {
@@ -60,7 +60,7 @@ namespace BasketKata
             return runningTotal;
         }
 
-        private static RunningTotal ApplyMilkRule(RunningTotal runningTotal)
+        private RunningTotal ApplyMilkRule(RunningTotal runningTotal)
         {
             while (runningTotal.CountMilk >= 1)
             {
@@ -71,7 +71,7 @@ namespace BasketKata
             return runningTotal;
         }
 
-        private static RunningTotal ApplyBreadRule(RunningTotal runningTotal)
+        private RunningTotal ApplyBreadRule(RunningTotal runningTotal)
         {
             while (runningTotal.CountBread >= 1)
             {
