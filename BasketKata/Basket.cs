@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using static BasketKata.Item;
 
 namespace BasketKata
 {
@@ -11,15 +12,12 @@ namespace BasketKata
         {
             get
             {
-                var countButter = _items.Count(item => item == Item.Butter);
-                var countMilk = _items.Count(item => item == Item.Milk);
-                return countButter * new Gbp(0.80m) + countMilk * new Gbp(1.15m);
+                return Count(Butter) * new Gbp(0.80m) + Count(Milk) * new Gbp(1.15m);
             }
         }
 
-        public void Add(Item item)
-        {
-            _items.Add(item);
-        }
+        public void Add(Item item) => _items.Add(item);
+
+        private int Count(Item item) => _items.Count(i => i == item);
     }
 }
