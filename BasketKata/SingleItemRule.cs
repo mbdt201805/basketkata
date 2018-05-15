@@ -2,18 +2,18 @@
 {
     public class SingleItemRule : IPricingRule
     {
-        private readonly Item _item;
+        private readonly Item _qualifyingItem;
 
-        public SingleItemRule(Item item)
+        public SingleItemRule(Item qualifyingItem)
         {
-            _item = item;
+            _qualifyingItem = qualifyingItem;
         }
 
         public RunningTotal Apply(RunningTotal runningTotal)
         {
-            while (runningTotal.Count(_item) >= 1)
+            while (runningTotal.Count(_qualifyingItem) >= 1)
             {
-                runningTotal = runningTotal.ApplyPrice(_item.Price, _item);
+                runningTotal = runningTotal.ApplyPrice(_qualifyingItem.Price, _qualifyingItem);
             }
 
             return runningTotal;
