@@ -15,9 +15,9 @@ namespace BasketKata
             get
             {
                 if (Count(Butter) == 2 && Count(Bread) == 1)
-                    return new Gbp(2.10m);
+                    return 2 * new Gbp(0.80m) + 1 * new Gbp(0.50m);
                 if (Count(Butter) == 2 && Count(Bread) == 2)
-                    return new Gbp(3.10m);
+                    return 2 * new Gbp(0.80m) + 1 * new Gbp(0.50m) + 1 * new Gbp(1.00m);
                 return ButterPrice() + MilkPrice() + BreadPrice();
             }
         }
