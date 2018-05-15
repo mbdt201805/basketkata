@@ -1,6 +1,6 @@
 ﻿namespace BasketKata
 {
-    public class MultiMilkRule
+    public class MultiMilkRule : IPricingRule
     {
         public RunningTotal Apply(RunningTotal runningTotal)
         {

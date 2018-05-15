@@ -45,6 +45,7 @@
     <Compile Include="BreadRule.cs" />
     <Compile Include="ButterRule.cs" />
     <Compile Include="Gbp.cs" />
+    <Compile Include="IPricingRule.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="MilkRule.cs" />
     <Compile Include="MultiMilkRule.cs" />

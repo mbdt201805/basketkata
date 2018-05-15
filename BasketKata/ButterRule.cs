@@ -1,6 +1,6 @@
 ﻿namespace BasketKata
 {
-    public class ButterRule
+    public class ButterRule : IPricingRule
     {
         public RunningTotal Apply(RunningTotal runningTotal)
         {
