@@ -14,13 +14,15 @@ namespace BasketKata
         {
             get
             {
-                return ButterPrice() + MilkPrice();
+                return ButterPrice() + MilkPrice() + BreadPrice();
             }
         }
 
         private Gbp ButterPrice() => Count(Butter) * new Gbp(0.80m);
 
         private Gbp MilkPrice() => Count(Milk) * new Gbp(1.15m);
+
+        private Gbp BreadPrice() => Count(Bread) * new Gbp(1.00m);
 
         private int Count(Item item) => _items.Count(i => i == item);
     }

@@ -3,6 +3,7 @@
     public enum Item
     {
         Butter,
-        Milk
+        Milk,
+        Bread
     }
 }
