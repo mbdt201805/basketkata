@@ -1,4 +1,6 @@
-﻿namespace BasketKata
+﻿using static BasketKata.Item;
+
+namespace BasketKata
 {
     public class MultiMilkRule : IPricingRule
     {
@@ -6,8 +8,7 @@
         {
             while (runningTotal.CountMilk >= 4)
             {
-                runningTotal = new RunningTotal(runningTotal.CountButter, runningTotal.CountBread,
-                    runningTotal.CountMilk - 4, runningTotal.Total + new Gbp(3.45m));
+                runningTotal = runningTotal.ApplyPrice(new Gbp(3.45m), Milk, Milk, Milk, Milk);
             }
 
             return runningTotal;

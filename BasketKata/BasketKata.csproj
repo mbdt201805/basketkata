@@ -50,6 +50,7 @@
     <Compile Include="MilkRule.cs" />
     <Compile Include="MultiMilkRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemainingBasket.cs" />
     <Compile Include="RunningTotal.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

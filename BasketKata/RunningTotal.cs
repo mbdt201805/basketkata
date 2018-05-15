@@ -1,26 +1,24 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using static BasketKata.Item;
 
 namespace BasketKata
 {
     public class RunningTotal
     {
-        public RunningTotal(int countButter, int countBread, int countMilk, Gbp total)
+        public static RunningTotal FromItems(IList<Item> items) => new RunningTotal(RemainingBasket.FromItems(items), new Gbp(0.00m));
+
+        private readonly RemainingBasket _remainingBasket;
+
+        private RunningTotal(RemainingBasket remainingBasket, Gbp total)
         {
-            CountButter = countButter;
-            CountBread = countBread;
-            CountMilk = countMilk;
+            _remainingBasket = remainingBasket;
             Total = total;
         }
 
-        public int CountButter { get; }
-        public int CountBread { get; }
-        public int CountMilk { get; }
+        public int CountButter => _remainingBasket.CountButter;
+        public int CountBread => _remainingBasket.CountBread;
+        public int CountMilk => _remainingBasket.CountMilk;
         public Gbp Total { get; }
 
-        public static RunningTotal FromItems(IList<Item> items) => new RunningTotal(Count(items, Butter), Count(items, Bread), Count(items, Milk), new Gbp(0.00m));
-
-        private static int Count(IEnumerable<Item> items, Item item) => items.Count(i => i == item);
+        public RunningTotal ApplyPrice(Gbp price, params Item[] items) => new RunningTotal(_remainingBasket.RemoveAll(items), Total + price);
     }
 }
