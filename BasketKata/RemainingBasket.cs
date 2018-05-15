@@ -1,32 +1,36 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using static BasketKata.Item;
 
 namespace BasketKata
 {
     public class RemainingBasket
     {
-        private RemainingBasket(int countButter, int countBread, int countMilk)
+        private readonly IEnumerable<Item> _items;
+
+        private RemainingBasket(IEnumerable<Item> items)
         {
-            CountButter = countButter;
-            CountBread = countBread;
-            CountMilk = countMilk;
+            _items = items;
         }
 
-        public int CountButter { get; }
-        public int CountBread { get; }
-        public int CountMilk { get; }
+        public int Count(Item item) => _items.Count(i => i == item);
 
-        public static RemainingBasket FromItems(IList<Item> items) => new RemainingBasket(Count(items, Item.Butter), Count(items, Item.Bread), Count(items, Item.Milk));
-
-        private static int Count(IEnumerable<Item> items, Item item) => items.Count(i => i == item);
+        public static RemainingBasket FromItems(IEnumerable<Item> items) => new RemainingBasket(items);
 
         public RemainingBasket RemoveAll(params Item[] itemsToRemove)
         {
-            var butterToRemove = itemsToRemove.Count(item => item == Item.Butter);
-            var milkToRemove = itemsToRemove.Count(item => item == Item.Milk);
-            var breadToRemove = itemsToRemove.Count(item => item == Item.Bread);
+            var butterToRemove = itemsToRemove.Count(item => item == Butter);
+            var milkToRemove = itemsToRemove.Count(item => item == Milk);
+            var breadToRemove = itemsToRemove.Count(item => item == Bread);
 
-            return new RemainingBasket(CountButter - butterToRemove,CountBread - breadToRemove, CountMilk - milkToRemove);
+            var countButter = Count(Butter) - butterToRemove;
+            var countBread = Count(Bread) - breadToRemove;
+            var countMilk = Count(Milk) - milkToRemove;
+
+            var newItems = Enumerable.Repeat(Butter, countButter).Concat(Enumerable.Repeat(Bread, countBread))
+                .Concat(Enumerable.Repeat(Milk, countMilk));
+
+            return new RemainingBasket(newItems);
         }
     }
 }

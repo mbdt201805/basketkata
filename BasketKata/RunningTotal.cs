@@ -14,9 +14,7 @@ namespace BasketKata
             Total = total;
         }
 
-        public int CountButter => _remainingBasket.CountButter;
-        public int CountBread => _remainingBasket.CountBread;
-        public int CountMilk => _remainingBasket.CountMilk;
+        public int Count(Item item) => _remainingBasket.Count(item);
         public Gbp Total { get; }
 
         public RunningTotal ApplyPrice(Gbp price, params Item[] items) => new RunningTotal(_remainingBasket.RemoveAll(items), Total + price);

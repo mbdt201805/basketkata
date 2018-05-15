@@ -6,7 +6,7 @@ namespace BasketKata
     {
         public RunningTotal Apply(RunningTotal runningTotal)
         {
-            while (runningTotal.CountMilk >= 1)
+            while (runningTotal.Count(Milk) >= 1)
             {
                 runningTotal = runningTotal.ApplyPrice(new Gbp(1.15m), Milk);
             }
